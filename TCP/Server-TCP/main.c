@@ -1,5 +1,5 @@
 #ifdef _WIN32
-    #include <winsock.h>    // vecchia winsock 1.1
+    #include <winsock.h>  
 #else
     #include <sys/socket.h>
     #include <arpa/inet.h>
@@ -68,8 +68,6 @@ int main() {
 
 #ifdef _WIN32
     WSADATA wsaData;
-
-    // ***** WINSOCK 1.1 *****
     int iResult = WSAStartup(MAKEWORD(1,1), &wsaData);
     if (iResult != 0) {
         printf("WSAStartup() failed\n");
@@ -91,7 +89,6 @@ int main() {
     sad.sin_family = AF_INET;
     sad.sin_port = htons(PORT);
 
-    // OLD STYLE: inet_addr() compatibile anche con winsock 1.1
     sad.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     if (sad.sin_addr.s_addr == INADDR_NONE) {
@@ -166,3 +163,4 @@ int main() {
     ClearWinSock();
     return 0;
 }
+
