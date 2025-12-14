@@ -42,12 +42,10 @@ int main(void)
 
     // COSTRUZIONE INDIRIZZO DEL SERVER
     struct sockaddr_in sad;
-    memset(&sad, 0, sizeof(sad)); // ensures that extra bytes contain 0
+    memset(&sad, 0, sizeof(sad)); 
     sad.sin_family = AF_INET;
     sad.sin_addr.s_addr = inet_addr("127.0.0.1");
-    sad.sin_port = htons(27015); /* converts values between the host and
-    network byte order. Specifically, htons() converts 16-bit quantities
-    from host byte order to network byte order. */
+    sad.sin_port = htons(27015); 
 
     printf(" FANTASTIC PROGRAM that REMOVE VOCALS\n\n");
     system("pause");
@@ -106,7 +104,7 @@ int main(void)
 
     char buffer[BUFFERSIZE];
 
-    // 4. ricezione risposta dal server
+    // ricezione risposta dal server
     int bytesRcvd = recv(CSocket, buffer, BUFFERSIZE-1, 0);
     if (bytesRcvd > 0) {
         buffer[bytesRcvd] = '\0';
@@ -117,3 +115,4 @@ int main(void)
     ClearWinSock();
     return 0;
 }
+
